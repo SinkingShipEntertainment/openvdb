@@ -59,7 +59,7 @@ include(GNUInstallDirs)
 
 # todo epydoc and pdflatex
 option(OPENVDB_BUILD_CORE "Enable the core OpenVDB library. Both static and shared versions are enabled by default" ON)
-option(OPENVDB_BUILD_BINARIES "Enable the vdb binaries. Only vdb_print is enabled by default" ON)
+option(OPENVDB_BUILD_BINARIES "Enable the vdb binaries. Only vdb_print is enabled by default" OFF)
 option(OPENVDB_BUILD_PYTHON_MODULE "Build the pyopenvdb Python module" OFF)
 option(OPENVDB_BUILD_UNITTESTS "Build the OpenVDB unit tests" OFF)
 option(OPENVDB_BUILD_DOCS "Build the OpenVDB documentation" OFF)
@@ -744,4 +744,10 @@ endif()
 
 add_custom_target(uninstall
   COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/Uninstall.cmake
+)
+
+# REZ
+install(
+    FILES rez_cmake/FindOpenVDB.cmake
+    DESTINATION rez_cmake
 )
