@@ -518,9 +518,3 @@ endif()
 add_custom_target(uninstall
   COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/Uninstall.cmake
 )
-
-# REZ
-install(
-    FILES rez_cmake/FindOpenVDB.cmake
-    DESTINATION rez_cmake
-)
