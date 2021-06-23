@@ -41,8 +41,8 @@ variants = [
 uuid = "repository.openvdb"
 
 # run rez-build -i or rez-release with CMake directives:
-# rez-build -i -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True -DBoost_USE_STATIC_LIBS=OFF
-# rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True -DBoost_USE_STATIC_LIBS=OFF
+# rez-build -i -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+# rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 
 def pre_build_commands():
     command("source /opt/rh/devtoolset-6/enable")
