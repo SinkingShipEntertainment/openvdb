@@ -25,9 +25,9 @@ with scope("config") as c:
         c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
 
 requires = [
-    "tbb-2017.6",
+    "tbb-2018.6",
     "blosc-1.17.0",
-    "openexr-2.2.0",
+    "openexr-2.3.0",
 ]
 
 private_build_requires = [
