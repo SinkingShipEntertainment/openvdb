@@ -33,6 +33,9 @@ requires = [
 private_build_requires = [
 ]
 
+# TODO: We are specifying the Python versions here just to drive the corrent version
+# of boost. But in the CMakeLists.txt, we are not building the Python modules for
+# VDB due to an error that I still need to investigate.
 variants = [
     ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "python-2.7.5"],
     ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "python-3.7.7"],
