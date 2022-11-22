@@ -1,6 +1,6 @@
 name = "openvdb"
 
-version = "6.1.0"
+version = "7.1.0"
 
 description = \
     """
@@ -25,9 +25,9 @@ with scope("config") as c:
         c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
 
 requires = [
-    "tbb-2018.6",
+    "tbb-2019.6",
     "blosc-1.5.4",
-    "openexr-2.3.0",
+    "openexr-2.4.3",
 ]
 
 private_build_requires = [
