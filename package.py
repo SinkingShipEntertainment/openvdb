@@ -55,6 +55,6 @@ def commands():
     env.OPENVDB_LOCATION = "{root}"
     env.OPENVDB_ROOT = "{root}"
     env.OPENVDB_INCLUDE_DIR = "{root}/include"
-    env.OPENVDB_LIBRARY_DIR = "{root}/lib"
+    env.OPENVDB_LIBRARY_DIR = "{root}/lib64"
     env.PATH.append("{root}/bin")
-    env.LD_LIBRARY_PATH.prepend("{root}/lib")
+    env.LD_LIBRARY_PATH.prepend("{root}/lib64")
