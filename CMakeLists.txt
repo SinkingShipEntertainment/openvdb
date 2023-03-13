@@ -67,7 +67,7 @@ include(GNUInstallDirs)
 # todo epydoc and pdflatex
 option(OPENVDB_BUILD_CORE "Enable the core OpenVDB library. Both static and shared versions are enabled by default" ON)
 option(OPENVDB_BUILD_BINARIES "Enable the vdb binaries. Only vdb_print is enabled by default" ON)
-option(OPENVDB_BUILD_PYTHON_MODULE "Build the pyopenvdb Python module" OFF)
+option(OPENVDB_BUILD_PYTHON_MODULE "Build the pyopenvdb Python module" ON)
 option(OPENVDB_BUILD_UNITTESTS "Build the OpenVDB unit tests" OFF)
 option(OPENVDB_BUILD_DOCS "Build the OpenVDB documentation" OFF)
 option(OPENVDB_BUILD_HOUDINI_PLUGIN "Build the Houdini plugin" OFF)
@@ -108,7 +108,7 @@ located openvdb build configuration to decide on log4cplus support. You may set 
 to be used if you know it to be required.]=] OFF)
 option(USE_EXR [=[
 Use OpenEXR while building openvdb components. If enabled, this also switches USE_IMATH_HALF to ON unless
-it too was provided and set to OFF.]=] OFF)
+it too was provided and set to OFF.]=] ON)
 option(USE_IMATH_HALF [=[
 Use the definiton of half floating point types from the Imath library. If OFF, the embedded definition provided
 by OpenVDB is used. If OPENVDB_BUILD_CORE is OFF, CMake attempts to query the located openvdb build configuration
@@ -571,6 +571,6 @@ endif()
 
 # REZ
 install(
-    FILES rez_cmake/FindOpenVDB.cmake
+    FILES cmake/FindOpenVDB.cmake
     DESTINATION rez_cmake
 )

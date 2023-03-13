@@ -1,6 +1,6 @@
 name = "openvdb"
 
-version = "7.1.0"
+version = "9.1.0"
 
 description = \
     """
@@ -25,9 +25,11 @@ with scope("config") as c:
         c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
 
 requires = [
-    "tbb-2019.6",
-    "blosc-1.5.4",
-    "openexr-2.4.3",
+    "tbb-2020.3",
+    "blosc-1.17.0",
+    "boost-1.76.0",
+    "openexr-3.1.5",
+    "numpy",
 ]
 
 private_build_requires = [
@@ -37,9 +39,8 @@ private_build_requires = [
 # of boost. But in the CMakeLists.txt, we are not building the Python modules for
 # VDB due to an error that I still need to investigate.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "python-2.7.5"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "python-3.7.7"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "python-3.9.7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7"],
 ]
 
 uuid = "repository.openvdb"
