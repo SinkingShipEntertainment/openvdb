@@ -10,22 +10,13 @@ description = \
     """
 
 with scope("config") as c:
-    # Determine location to release: internal (int) vs external (ext)
-
-    # NOTE: Modify this variable to reflect the current package situation
-    release_as = "ext"
-
-    # The `c` variable here is actually rezconfig.py
-    # `release_packages_path` is a variable defined inside rezconfig.py
-
     import os
-    if release_as == "int":
-        c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_INT"]
-    elif release_as == "ext":
-        c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
+    c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
 
 requires = [
     "blosc-1.17.0",
+    "tbb-2020.3",
+    "boost-1.76.0",
     "openexr-3.1.5",
     "numpy",
 ]
@@ -37,8 +28,8 @@ private_build_requires = [
 # of boost. But in the CMakeLists.txt, we are not building the Python modules for
 # VDB due to an error that I still need to investigate.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7", "tbb-2019.6", "boost-1.76.0"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9", "tbb-2019.6", "boost-1.76.0"],
+    ["python-3.7"],
+    ["python-3.9"],
 ]
 
 uuid = "repository.openvdb"
@@ -48,7 +39,23 @@ uuid = "repository.openvdb"
 # rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 
 def pre_build_commands():
-    command("source /opt/rh/devtoolset-6/enable")
+
+    info = {}
+    with open("/etc/os-release", 'r') as f:
+        for line in f.readlines():
+            if line.startswith('#'):
+                continue
+            line_info = line.replace('\n', '').split('=')
+            if len(line_info) != 2:
+                continue
+            info[line_info[0]] = line_info[1].replace('"', '')
+    linux_distro = info.get("NAME", "centos")
+    print("Using Linux distro: " + linux_distro)
+
+    if linux_distro.lower().startswith("centos"):
+        command("source /opt/rh/devtoolset-6/enable")
+    elif linux_distro.lower().startswith("rocky"):
+        pass
 
 def commands():
     env.OPENVDB_LOCATION = "{root}"
