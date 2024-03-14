@@ -16,8 +16,8 @@ with scope("config") as c:
 requires = [
     "blosc-1.17.0",
     "tbb-2020.3",
-    "boost-1.76.0",
-    "openexr-3.1.5",
+    "boost-1.76",
+    "openexr-3.1.12",
     "numpy",
 ]
 
