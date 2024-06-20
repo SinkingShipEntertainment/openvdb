@@ -1,6 +1,6 @@
 name = "openvdb"
 
-version = "9.1.0.sse.1.0.0"
+version = "9.1.0.sse.2.0.0"
 
 description = \
     """
@@ -16,7 +16,7 @@ with scope("config") as c:
 requires = [
     "blosc-1.17.0",
     "tbb-2020.3",
-    "boost-1.76",
+    "boost-1.82",
     "openexr-3.1.12",
     "numpy",
 ]
